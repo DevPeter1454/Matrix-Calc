@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Matrix Determinant Calculator</title>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
+      <h1 class="text-2xl font-semibold mb-4">Matrix Determinant Calculator</h1>
+
+      <div class="grid grid-cols-3 gap-4 mb-4">
+        <!-- Input fields for matrix elements -->
+        <input type="number" id="mat11" class="p-2 border border-gray-300 rounded" placeholder="Element 11" required/>
+        <input type="number"
+          id="mat12" class="p-2 border border-gray-300 rounded" placeholder="Element 12" required/>
+        <input type="number" id="mat13" class="p-2 border border-gray-300 rounded" placeholder="Element 13" required/>
+
+        <input type="number" id="mat21" class="p-2 border border-gray-300 rounded" placeholder="Element 21" required/>
+        <input type="number" id="mat22" class="p-2 border border-gray-300 rounded" placeholder="Element 22" required />
+        <input type="number" id="mat23" class="p-2 border border-gray-300 rounded" placeholder="Element 23" required/>
+
+        <input type="number" id="mat31" class="p-2 border border-gray-300 rounded" placeholder="Element 31" required />
+        <input type="number" id="mat32" class="p-2 border border-gray-300 rounded" placeholder="Element 32" required/>
+        
+        <input type="number" id="mat33" class="p-2 border border-gray-300 rounded" placeholder="Element 33" required />
+      </div>
+
+      <!-- Button to calculate determinant -->
+      <button
+        onclick="calculateDeterminant()"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+      >
+        Calculate Determinant
+      </button>
+
+      <!-- Result display -->
+      <div id="result" class="mt-4 text-lg font-semibold"></div>
+    </div>
+
+    <script>
+      function calculateDeterminant() {
+        // Get matrix elements
+        const mat11 = parseFloat(document.getElementById("mat11").value);
+        const mat12 = parseFloat(document.getElementById("mat12").value);
+        const mat13 = parseFloat(document.getElementById("mat13").value);
+
+        const mat21 = parseFloat(document.getElementById("mat21").value);
+        const mat22 = parseFloat(document.getElementById("mat22").value);
+        const mat23 = parseFloat(document.getElementById("mat23").value);
+
+        const mat31 = parseFloat(document.getElementById("mat31").value);
+        const mat32 = parseFloat(document.getElementById("mat32").value);
+        const mat33 = parseFloat(document.getElementById("mat33").value);
+
+        // Calculate determinant
+        const determinant =
+          mat11 * (mat22 * mat33 - mat23 * mat32) -
+          mat12 * (mat21 * mat33 - mat23 * mat31) +
+          mat13 * (mat21 * mat32 - mat22 * mat31);
+
+        // Display result
+        document.getElementById(
+          "result"
+        ).innerText = `Determinant: ${determinant}`;
+      }
+    </script>
+  </body>
+</html>
